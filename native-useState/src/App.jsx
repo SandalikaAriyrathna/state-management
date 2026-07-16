@@ -32,11 +32,7 @@ function Counter() {
 
   return <div className='App'>
 
-    <button
-
-      onClick={addOne}
-
-    >Count = {count}</button>
+    <button onClick={addOne}>Count = {count}</button>
 
   </div>
 
@@ -47,8 +43,6 @@ function App() {
     <div className="App">
       <Counter />
       <NameList />
-
-
     </div>
   )
 }
