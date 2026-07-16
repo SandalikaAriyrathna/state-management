@@ -38,7 +38,8 @@ function App() {
   const sortFunc = useCallback((a, b) => a.localeCompare(b) * -1, []);
 
 
-  return (<>
+  return (
+  <div className="App">
 
     <div> Total : {total} </div>
     <div> Names : {names.join(', ')} </div>
@@ -53,7 +54,7 @@ function App() {
     <div> Count Total : {countTotal} </div>
 
 
-  </>
+  </div>
 
 
 
