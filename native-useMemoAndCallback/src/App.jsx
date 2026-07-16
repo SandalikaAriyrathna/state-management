@@ -1,5 +1,20 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import './App.css'
+
+function SortedList({ list, sortFunc }) {
+  console.log("Rendering SortedList");
+
+  const sortedList = useMemo(() => {
+    console.log("Running Sorting");
+    return [...list].sort(sortFunc);
+  }, [list, sortFunc]);
+
+  return (
+    <div> Sorted List : {sortedList.join(', ')} </div>
+  );
+}
+
+// const sortFunc = (a, b) => a.localeCompare(b) * -1; 
 
 function App() {
 
@@ -16,19 +31,27 @@ function App() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
 
-  const countTotal = useMemo(() => count1 + count2, [count1, count2]);
+  // const countTotal = useMemo(() => count1 + count2, [count1, count2]);
+  const countTotal = count1 + count2;
+
+  // const sortFunc = (a, b) => a.localeCompare(b) * -1; 
+  const sortFunc = useCallback((a, b) => a.localeCompare(b) * -1, []);
+
 
   return (<>
 
     <div> Total : {total} </div>
     <div> Names : {names.join(', ')} </div>
-    <div> Sorted Names : {sortedNames.join(', ')} </div>
-    
+    {/* <div> Sorted Names : {sortedNames.join(', ')} </div> */}
+
+    <SortedList list={names} sortFunc={sortFunc} />
+    {/* <SortedList list={names} sortFunc={(a, b) => a.localeCompare(b) * -1} /> */}
+
     <div><button onClick={() => setCount1(count1 + 1)}> Count 1 : {count1} </button></div>
     <div><button onClick={() => setCount2(count2 + 1)}> Count 2 : {count2} </button></div>
 
     <div> Count Total : {countTotal} </div>
-  
+
 
   </>
 
