@@ -1,1 +1,1 @@
-<img align="right" alt="Coding" width="400" src="./hooks.jpeg">
+<img src="./hooks.jpeg">
